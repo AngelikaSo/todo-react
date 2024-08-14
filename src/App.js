@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./components/TodoItem.js";
+import ToDoList from "./components/TodoList.js";
 
 function App() {
+  const sampleToDo = [
+    {
+      id: 1,
+      text: "Test Task",
+      completed: true,
+    },
+    {
+      id: 2,
+      text: "Test Task",
+      completed: false,
+    },
+  ];
+
+  const toggleComplete = (id) => {
+    console.log(`Todo with id ${id} was toggled`);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>ToDo List</h1>
+      <ToDoList todos={sampleToDo} toggleComplete={toggleComplete} />
     </div>
   );
 }
