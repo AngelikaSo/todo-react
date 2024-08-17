@@ -1,20 +1,21 @@
 import React from "react";
-import ToDoItem from "./TodoItem";
+import TodoItem from "./TodoItem.js";
 
-function ToDoList({ todos, toggleComplete }) {
+function ToDoList({ todos, toggleComplete, addTodo }) {
   return (
     <div className="todo-list">
       <h1 className="header">To Do List</h1>
-      <ul className="doto-items">
-        <ToDoItem />
+      <ul className="todo-items">
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            toggleComplete={() => toggleComplete(todo.id)}
+          />
+        ))}
       </ul>
     </div>
   );
 }
 
 export default ToDoList;
-
-/*
-{todos.map((todo) => (
-  <ToDoItem key={todo.id} todo={todo} toggleComplete={toggleComplete} />
-))}*/
