@@ -19,11 +19,19 @@ function TodoApp() {
     );
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div>
       <h1 className="header">To Do App</h1>
       <TodoForm addTodo={addTodo} />
-      <ToDoList todos={todos} toggleComplete={toggleComplete} />
+      <ToDoList
+        todos={todos}
+        toggleComplete={toggleComplete}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 }
