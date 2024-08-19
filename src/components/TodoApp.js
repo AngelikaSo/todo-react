@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ToDoList from "./TodoList.js";
 import TodoForm from "./TodoForm.js";
 
-function TodoApp() {
+function TodoApp(todo) {
   const [todos, setTodos] = useState([]);
   const [idCounter, setIdCounter] = useState(0);
 
@@ -19,6 +19,14 @@ function TodoApp() {
     );
   };
 
+  const editTodo = (id, newTitle) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, title: newTitle } : todo
+      )
+    );
+  };
+
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -31,6 +39,7 @@ function TodoApp() {
         todos={todos}
         toggleComplete={toggleComplete}
         deleteTodo={deleteTodo}
+        editTodo={editTodo}
       />
     </div>
   );
